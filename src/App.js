@@ -18,12 +18,12 @@ function App() {
       <h1>React form practice</h1>
       <form onSubmit={handleSubmit}>
         <label>
-          Name:{' '}
+          Name:
           <input type='text' name='name' value={name} onChange={handleChange} />
         </label>
         <br />
         <label>
-          Email:{' '}
+          Email:
           <input
             type='text'
             name='email'
