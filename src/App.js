@@ -1,12 +1,20 @@
-import { useState } from 'react';
+import { useReducer } from 'react';
 
 function App() {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
+  const initialState = {
+    name: '',
+    email: '',
+  };
+
+  const reducer = (state, action) => {
+    const { type, payload } = action;
+    return { ...state, [type]: payload };
+  };
+  const [state, dispatch] = useReducer(reducer, initialState);
+  const { name, email } = state;
 
   const handleChange = (e) => {
-    if (e.target.name === 'name') setName(e.target.value);
-    else if (e.target.name === 'email') setEmail(e.target.value);
+    dispatch({ type: e.target.name, payload: e.target.value });
   };
 
   const handleSubmit = (e) => {
